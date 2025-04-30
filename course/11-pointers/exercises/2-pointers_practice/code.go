@@ -2,10 +2,22 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func removeProfanity(message *string) {
-	// ?
+	dereferencedMessage := *message
+
+	censorWord := func(badWord string) {
+		replacement := strings.Repeat("*", len(badWord))
+		dereferencedMessage = strings.ReplaceAll(dereferencedMessage, badWord, replacement)
+	}
+
+	censorWord("dang")
+	censorWord("shoot")
+	censorWord("heck")
+
+	*message = dereferencedMessage
 }
 
 // don't touch below this line
