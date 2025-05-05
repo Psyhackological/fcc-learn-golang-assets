@@ -19,8 +19,8 @@ func (sc safeCounter) inc(key string) {
 }
 
 func (sc safeCounter) val(key string) int {
-	sc.mux.Lock()
-	defer sc.mux.Unlock()
+	sc.mux.RLock()
+	defer sc.mux.RUnlock()
 	return sc.counts[key]
 }
 
